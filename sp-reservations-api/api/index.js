@@ -52,7 +52,7 @@ return res.send('Service Health');
 // HTTP endpoint to create new user
 app.post('/api/v1/reservation', async (req, res, next) => {
 
-try{await axios.get('http://localhost:5008/api/v1/security/')
+try{await axios.get('https://security-wc.vercel.app/api/v1/security/')
 .then(res=>{
     ip=res.data.data.guestIP
     count = res.data.data.count
@@ -115,7 +115,7 @@ body: {
     tickets: req.body.tickets,
 }
 });
-await axios.patch('http://localhost:5008/api/v1/security/increment',{ipAdd: ip})
+await axios.patch('https://security-wc.vercel.app/api/v1/security/increment',{ipAdd: ip})
 return res.status(400).send(`could not process payment: ${stripeError.message}`);
 }
 
