@@ -156,9 +156,14 @@ app.post('/api/v1/tickets/reserved', async (req, res) => {
         const email = req.body.email;
         const doc = await Tickets.find({email:email})
       
-        if (!doc) {
-            return next(new AppError('No document found with that email', 404));
+              
+        if (!doc || doc.length <=0) {
+            res.status(400).json({
+                status:'failed',
+            })
+            return;
         }
+        
         res.status(200).json({
             status: 'success',
             data: doc           
