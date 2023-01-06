@@ -72,6 +72,19 @@ try {
     if (validationError) {
     return res.status(403).send(validationError.message);
     }
+        
+    if(req.body.tickets.category === 1 && req.body.tickets.price != 75){
+        return res.status(403).send("There is an error in the category... wrong price!");
+    }
+
+    if(req.body.tickets.category === 2 && req.body.tickets.price != 125){
+        return res.status(403).send("There is an error in the category... wrong price!");
+    }
+
+    if(req.body.tickets.category === 3 && req.body.tickets.price != 195){
+        return res.status(403).send("There is an error in the category... wrong price!");
+    }
+
     // Send message indicating ticket is pending checkout
     // so shop consumers can process message and call
     // sp-shop-api to decrement available ticket count
