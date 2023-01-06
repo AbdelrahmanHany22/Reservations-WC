@@ -13,8 +13,8 @@ const kafka = new Kafka({
   connectionTimeout: 20000, 
   sasl: {
     mechanism: 'plain',
-    username: process.env.KAFKA_SASL_USERNAME,
-    password: process.env.KAFKA_SASL_PASSWORD
+    username: 'NGVSSCWLOFWWFXWG',
+    password: 'qxr7bXuVkdQXL3yFOVPmzCCvuJpQY7IKKTvBY8gfeLWBA9qse+SZXLOJzmwCtgom'
   },
 });
 
@@ -35,12 +35,10 @@ const sendKafkaMessage = async (messageType, message) => {
   if (validationError) {
     return Promise.reject(validationError);
   }
-
   // send message to kafka broker
   let attempts = 0;
   do {
     try {
-      await startKafkaProducer();
       await producer.send({ topic, messages: [{ value: JSON.stringify(message) }] });
     } catch (e) {
       console.log('e.message', e.message)
