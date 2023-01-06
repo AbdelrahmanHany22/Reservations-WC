@@ -13,8 +13,8 @@ const kafka = new Kafka({
   connectionTimeout: 20000, 
   sasl: {
     mechanism: 'plain',
-    username: 'NGVSSCWLOFWWFXWG',
-    password: 'qxr7bXuVkdQXL3yFOVPmzCCvuJpQY7IKKTvBY8gfeLWBA9qse+SZXLOJzmwCtgom'
+    username: process.env.KAFKA_SASL_USERNAME,
+    password: process.env.KAFKA_SASL_PASSWORD
   },
 });
 
