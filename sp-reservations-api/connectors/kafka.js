@@ -40,6 +40,7 @@ const sendKafkaMessage = async (messageType, message) => {
   let attempts = 0;
   do {
     try {
+      await startKafkaProducer();
       await producer.send({ topic, messages: [{ value: JSON.stringify(message) }] });
     } catch (e) {
       console.log('e.message', e.message)
