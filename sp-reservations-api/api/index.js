@@ -160,6 +160,7 @@ app.post('/api/v1/tickets/reserved', async (req, res) => {
         if (!doc || doc.length <=0) {
             res.status(400).json({
                 status:'failed',
+                data:"No tickets bought with this email from this website."
             })
             return;
         }
